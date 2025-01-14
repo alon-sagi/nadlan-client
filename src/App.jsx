@@ -1,6 +1,32 @@
 import { useState, useEffect } from 'react'
-import './App.css'
+import { initializeApp } from 'firebase/app';
+import { getAnalytics } from 'firebase/analytics';
+import { getAuth } from 'firebase/auth';
+import PhoneSignup from './components/PhoneSignup';
+import './App.css';
 
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyDXQ-nImS_L4lkbjlYK6-GN8PTMg-fqzDw",
+  authDomain: "nadlan-oversight.firebaseapp.com",
+  projectId: "nadlan-oversight",
+  storageBucket: "nadlan-oversight.firebasestorage.app",
+  messagingSenderId: "522310369317",
+  appId: "1:522310369317:web:cd2957f2ff257a8ea0bfcc",
+  measurementId: "G-WE6L7DPJ8Y"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const auth = getAuth();
+auth.useDeviceLanguage();
+
+// ---
 function App() {
   const [health, setHealth] = useState(null)
   const [error, setError] = useState(null)
@@ -17,21 +43,7 @@ function App() {
 
   return (
     <>
-      <h1>Vite + React + Express</h1>
-      <div className="card">
-        <h2>Backend Status:</h2>
-        {error ? (
-          <div style={{ color: 'red' }}>
-            Error connecting to backend: {error}
-          </div>
-        ) : health ? (
-          <pre style={{ textAlign: 'left' }}>
-            {JSON.stringify(health, null, 2)}
-          </pre>
-        ) : (
-          <p>Loading backend status...</p>
-        )}
-      </div>
+      <PhoneSignup /> 
     </>
   )
 }
