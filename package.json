@@ -7,9 +7,12 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "push": "git add . && git commit -m \"quick push\" && git push",
+    "deploy": "firebase deploy"
   },
   "dependencies": {
+    "firebase": "^11.1.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
